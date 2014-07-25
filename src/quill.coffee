@@ -22,6 +22,8 @@ Themes =
   Default : require('./themes/default')
   Snow    : require('./themes/snow')
 
+Tools =
+  Picker  : require('./lib/picker')
 
 class Quill extends EventEmitter2
   @version: pkg.version
@@ -29,6 +31,7 @@ class Quill extends EventEmitter2
 
   @Module: Modules
   @Theme: Themes
+  @Tools: Tools
 
   @DEFAULTS:
     formats: ['align', 'bold', 'italic', 'strike', 'underline', 'color', 'background', 'font', 'size', 'link', 'image', 'bullet', 'list']
@@ -51,6 +54,9 @@ class Quill extends EventEmitter2
     API    : 'api'
     SILENT : 'silent'
     USER   : 'user'
+
+  @require: (name) -> 
+    require(name)
 
   constructor: (container, options = {}) ->
     container = document.querySelector(container) if _.isString(container)
